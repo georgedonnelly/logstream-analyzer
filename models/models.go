@@ -53,7 +53,6 @@ type Alert struct {
 }
 
 // NewLogStats creates a new LogStats instance
-// NewLogStats creates a new LogStats instance
 func NewLogStats() *LogStats {
 	stats := &LogStats{
 			LevelCounts:      make(map[string]int),

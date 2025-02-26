@@ -1,6 +1,5 @@
 // reader/reader.go - Reads log entries from stdin and sends them to a channel for processing.
 
-
 package reader
 
 import (

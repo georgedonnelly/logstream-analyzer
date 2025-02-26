@@ -1,7 +1,6 @@
 // analyzer/patterns.go
 // This file contains the implementation for tracking error patterns and their weights.
 
-
 package analyzer
 
 import (
