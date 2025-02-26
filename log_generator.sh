@@ -72,7 +72,8 @@ while true; do
     
     # Generate burst of log entries
     for ((i=0; i<burst_size; i++)); do
-        generate_log_entry >> "$LOG_FILE"
+        # generate_log_entry >> "$LOG_FILE"
+        generate_log_entry # stdout
     done
     
     # Random sleep between bursts (in milliseconds)
