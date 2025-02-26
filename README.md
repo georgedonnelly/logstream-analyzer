@@ -28,9 +28,5 @@ go build -o log_analyzer
 standard
 ./log_generator.sh | ./log_analyzer -debug  
 
-will see some emerging patterns
-/log_generator_high_load.sh | ./log_analyzer -debug   
-
-To maximize your chances of seeing all these behaviors, I recommend running the analyzer with these flags:
-
-./log_generator_ultra.sh | ./log_analyzer -buffer=5000 -debug
+max
+./log_generator_max.sh | ./log_analyzer -buffer=500 -debug

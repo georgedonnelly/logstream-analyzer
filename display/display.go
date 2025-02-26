@@ -83,6 +83,13 @@ func (d *Display) render(stats *models.LogStats) {
 	// Format timestamp
 	timestamp := stats.LastUpdated.UTC().Format("2006-01-02 15:04:05 UTC")
 
+	// Format window size with previous window size if it changed
+	windowSizeText := fmt.Sprintf("%d sec", stats.WindowSize)
+	if stats.PreviousWindowSize > 0 && stats.PreviousWindowSize != stats.WindowSize {
+		windowSizeText = fmt.Sprintf("%d sec (Adjusted from %d sec)", 
+			stats.WindowSize, stats.PreviousWindowSize)
+	}
+
 	// Build the report
 	report := fmt.Sprintf(`
 Log Analysis Report (Last Updated: %s)
@@ -90,14 +97,14 @@ Log Analysis Report (Last Updated: %s)
 Runtime Stats:
 • Entries Processed: %s
 • Current Rate: %.0f entries/sec (Peak: %.0f entries/sec)
-• Adaptive Window: %d sec
+• Adaptive Window: %s
 
 Pattern Analysis:`,
 		timestamp,
 		formatNumber(stats.EntriesProcessed),
 		stats.CurrentRate,
 		stats.PeakRate,
-		stats.WindowSize,
+		windowSizeText,
 	)
 
 	// Add log level distribution

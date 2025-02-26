@@ -33,6 +33,7 @@ type LogStats struct {
 	LastUpdated       time.Time
 	mux               sync.RWMutex
 	EmergingPatternHistory []EmergingPatternEvent
+	PreviousWindowSize int // Track the previous window size for display
 }
 
 // EmergingPatternEvent tracks history of pattern spikes
@@ -60,6 +61,7 @@ func NewLogStats() *LogStats {
 			ErrorRates:       make(map[string]float64),
 			EmergingPatterns: make(map[string]float64),
 			WindowSize:       60, // Default 60-second window
+			PreviousWindowSize: 60, // Initialize same as starting window
 			LastUpdated:      time.Now(),
 			EmergingPatternHistory: make([]EmergingPatternEvent, 0, 5),
 	}

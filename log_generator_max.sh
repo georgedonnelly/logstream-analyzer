@@ -2,7 +2,7 @@
 # log_generator_max.sh - A high-performance log generator script
 
 # Maximum performance settings
-BURST_SIZE=100000
+BURST_SIZE=1000 #smaller burst size for testing
 SPIKE_PERIOD=5
 
 # Array of error messages (shortened for efficiency)
@@ -66,6 +66,7 @@ while true; do
     for ((i=0; i<BURST_SIZE; i++)); do
         generate_log_entry
     done
+    sleep 0.05  # add a small sleep to avoid CPU overload
     
     # No sleep at all - maximum throughput
 done

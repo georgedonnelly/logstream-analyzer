@@ -214,10 +214,17 @@ func (a *Analyzer) generateStats() *models.LogStats {
 		}
 	} else if currentRate < 600 && a.stats.WindowSize < 120 {
 		newWindowSize = min(120, a.stats.WindowSize+10)
+
+		// alert for expansion
+		a.alertChan <- models.Alert{
+			Timestamp: time.Now(),
+			Message:   fmt.Sprintf("⚠️ Adjusted window to %d sec due to lower load", newWindowSize),
+	}
 	}
 
 	// If window size changed, update it
 	if newWindowSize != a.stats.WindowSize {
+		a.stats.PreviousWindowSize = a.stats.WindowSize
 		a.stats.WindowSize = newWindowSize
 		a.window.SetDuration(newWindowSize)
 		
@@ -299,6 +306,7 @@ func (a *Analyzer) cloneStats() *models.LogStats {
 	clone.CurrentRate = a.stats.CurrentRate
 	clone.PeakRate = a.stats.PeakRate
 	clone.WindowSize = a.stats.WindowSize
+	clone.PreviousWindowSize = a.stats.PreviousWindowSize
 	clone.LastUpdated = a.stats.LastUpdated
 	clone.SkippedEntries = a.stats.SkippedEntries
 	
