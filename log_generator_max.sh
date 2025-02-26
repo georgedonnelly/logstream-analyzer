@@ -5,11 +5,15 @@
 BURST_SIZE=1000 #smaller burst size for testing
 SPIKE_PERIOD=5
 
-# Array of error messages (shortened for efficiency)
+# Array of error messages
 declare -a ERROR_MESSAGES=(
     "Database connection failed"
     "Null pointer exception"
+    "File not found"
+    "Access denied"
     "Out of memory"
+    "Network timeout occurred"
+    "Illegal argument provided"
     "User authentication failed"
 )
 
@@ -68,5 +72,4 @@ while true; do
     done
     sleep 0.05  # add a small sleep to avoid CPU overload
     
-    # No sleep at all - maximum throughput
 done
