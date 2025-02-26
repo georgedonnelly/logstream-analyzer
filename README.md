@@ -45,6 +45,20 @@ For stress testing:
 ./log_generator_max.sh | ./log_analyzer -buffer=100 -debug
 ```
 
+## Screenshots
+
+### Original Script
+![Original Script](./img/1.png)
+
+### Max Script, Normal Mode
+![Max Script normal mode](./img/2.png)
+
+### Max Script, Extreme Mode
+Not sure I was able to test this properly
+
+![Max Script extreme mode](./img/3.png)
+
+
 ## Implementation Details
 
 ### Self-Adjusting Time Window
