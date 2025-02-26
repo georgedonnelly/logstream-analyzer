@@ -27,7 +27,7 @@ func NewDisplay(statsChan chan *models.LogStats, alertChan chan models.Alert) *D
 		alertChan:     alertChan,
 		stopChan:      make(chan struct{}),
 		alerts:        make([]models.Alert, 0, 10),
-		maxAlerts:     3, // Show the 3 most recent alerts
+		maxAlerts:     12, // Show the 12 most recent alerts
 		clearScreenFn: clearScreen,
 	}
 }

@@ -206,7 +206,7 @@ func (a *Analyzer) generateStats() *models.LogStats {
 
 	// Adjust window size based on processing rate
 	newWindowSize := a.stats.WindowSize
-	if currentRate > 2500 && a.stats.WindowSize > 30 {
+	if currentRate > 400 && a.stats.WindowSize > 30 {
 		newWindowSize = max(30, a.stats.WindowSize-10)
 		a.alertChan <- models.Alert{
 			Timestamp: time.Now(),
