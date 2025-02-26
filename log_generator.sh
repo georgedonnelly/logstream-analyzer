@@ -1,4 +1,5 @@
 #!/bin/bash
+# log_generator.sh - A simple log generator script (original)
 # https://github.com/maurodelazeri/dummy_log_generator/blob/main/generator.sh
 
 # Configuration variables
